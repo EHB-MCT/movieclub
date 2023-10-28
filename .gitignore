@@ -248,5 +248,6 @@ $RECYCLE.BIN/
 *.lnk
 
 _volumes
+.env
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,react,nextjs,git,node,dotenv,windows
