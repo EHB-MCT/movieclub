@@ -10,11 +10,10 @@ module.exports = {
     connection: {
       host:     'postgres',
       port:     5432,
-      database: "dev5",
+      database: "movieclub",
       user:     "admin",
       password: "root",
     },
-    debug: true,
     pool: {
       min: 2,
       max: 10
