@@ -10,10 +10,16 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors());
 
+// Define routes
+const genres = require("./routes/genres.route")
+
 // Show info page
 app.get('/', (req, res) => {
     res.status(300).redirect('/info.html')
 });
+
+// Use routes
+app.use("/api/v1/genres", genres);
 
 // Export app
 module.exports = app;
