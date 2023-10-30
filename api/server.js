@@ -12,6 +12,7 @@ app.use(cors());
 
 // Define routes
 const genres = require("./routes/genres.route")
+const movies = require("./routes/movies.route")
 
 // Show info page
 app.get('/', (req, res) => {
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 
 // Use routes
 app.use("/api/v1/genres", genres);
+app.use("/api/v1/movies", movies);
 
 // Export app
 module.exports = app;
