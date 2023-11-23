@@ -35,6 +35,14 @@ const deleteMovie = async(movieId) => {
     return await knex('movies').where({ id: movieId }).del();
 }
 
+const getMoviesByGenre = async(genreName) => {
+    return await knex('movies')
+        .select(['movies.name', "movies.tmdb_id", "genres.name AS genreName", "movies.is_watched", "movies.is_favorite", "movies.created_at", "movies.updated_at"])
+        .join('movies_genres', 'movies.id', 'movies_genres.movie_id')
+        .join('genres', 'movies_genres.genre_id', 'genres.id')
+        .where('genres.name', genreName.genreName);
+}
+
 module.exports = {
     getAllMovies,
     getAllWatchedMovies,
@@ -43,4 +51,5 @@ module.exports = {
     createMovie,
     updateMovie,
     deleteMovie,
+    getMoviesByGenre,
 }
