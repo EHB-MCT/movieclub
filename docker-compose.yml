@@ -34,18 +34,18 @@ services:
       postgres:
         condition: service_healthy
 
-  frontend:
-    build: ./client/
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./client:/usr/src/app
-    depends_on:
-      - backend
-    networks:
-      - movieclub
+  # frontend:
+    # build: ./client/
+    # ports:
+      # - "3000:3000"
+    # volumes:
+      # - ./client:/usr/src/app
+    # depends_on:
+      # - backend
+    # networks:
+      # - movieclub
     # keep container running at all times 
-    tty: true
+    # tty: true
       
 networks:
   movieclub:
