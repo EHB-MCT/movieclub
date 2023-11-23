@@ -1,10 +1,20 @@
 const express = require("express");
 const router = express.Router();
 
-const knex = require("../database/connect_database")
+const knex = require("../database/connect_database");
+const { Model } = require('objection');
+
 router.use(express.json());
 
-const movies = require('../controllers/movie.controller')
+// Import controller
+const movies = require('../controllers/movie.controller');
+
+// Import models
+const Movie = require('../models/movie.model');
+const Genre = require('../models/genre.model');
+
+// Bind Objection.js to Knex
+Model.knex(knex);
 
 /**
  * Retrieve all movies.
@@ -133,6 +143,25 @@ router.delete("/:id", async(req, res) => {
     } catch (error) {
         console.error('Error deleting movie: ', error);
         res.status(500).json({ error: 'Failed to delete movie.' });
+    }
+});
+
+/**
+ * Retrieve all movies with specific genre.
+ *
+ * @route GET /api/v1/movies/:genre
+ * @param {string} req.params.id - The ID of the movie to delete.
+ * @returns {array} - An array of all movies with a specific genre.
+ * @throws {object} - Returns a 500 Internal Server Error if the retrieval fails.
+ */
+router.get("/genres/:genreName", async(req, res) => {
+    const genreName = req.params;
+    try {
+        const getMoviesByGenre = await movies.getMoviesByGenre(genreName);
+        res.json(getMoviesByGenre);
+    } catch (error) {
+        console.error(`Error retrieving movies with genre: ${genreName}`, error);
+        res.status(500).json({ error: `Failed to retrieve movies with genre: ${genreName}.` });
     }
 });
 
