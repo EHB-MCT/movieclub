@@ -4,7 +4,6 @@
  */
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
-  await knex('movies').del()
   return knex('movies').insert([
     {name: "Dark Star", tmdb_id: 1410, is_watched: true, is_favorite: false},
     {name: "Cocaine Cowboys", tmdb_id: 170696, is_watched: false, is_favorite: false},
