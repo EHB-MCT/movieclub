@@ -11,9 +11,7 @@ describe('GET /api/v1/genres/:id', () => {
     it('should return the genre with a specific ID', async () => {
         const exampleGenre = { id: 1, name: 'Action' };
         
-        //genres.getGenreById.mockResolvedValueOnce(exampleGenre);
         jest.spyOn(genres, 'getGenreById').mockResolvedValueOnce(exampleGenre);
-
 
         const response = await request(app).get('/api/v1/genres/1');
 

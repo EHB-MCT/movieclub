@@ -1,7 +1,7 @@
 version: '3.8'
 services:
 
-  postgres:
+  database:
     image: postgres:16.0
     restart: unless-stopped
     container_name: movieclub_postgres
@@ -21,17 +21,17 @@ services:
       timeout: 5s
       retries: 10
   
-  backend:
+  api:
     container_name: movieclub_backend
-    build: ./api/
+    build: ./images/api/
     ports: 
       - "6200:6200"
     volumes: 
-      - ./api:/usr/src/app
+      - ./images/api:/usr/src/app
     networks:
       - movieclub
     depends_on:
-      postgres:
+      database:
         condition: service_healthy
       
 networks:
