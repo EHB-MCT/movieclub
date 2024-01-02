@@ -4,7 +4,7 @@
   "description": "Backend for movieclub",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "npx knex migrate:latest --cwd database && npx knex migrate:up --cwd database && npx knex seed:run --cwd database && nodemon index.js"
   },
   "repository": {
@@ -29,6 +29,7 @@
     "knex": "^3.0.1",
     "nodemon": "^3.0.1",
     "objection": "^3.1.2",
-    "pg": "^8.11.3"
+    "pg": "^8.11.3",
+    "supertest": "^6.3.3"
   }
 }
