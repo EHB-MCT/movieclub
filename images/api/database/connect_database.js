@@ -7,7 +7,7 @@ const config = require('./knexfile');
 // let database = null;
 
 const database = knex(config.development); // Adjust the environment as needed
-console.log('Database connected');
+//console.log('Database connected');
 
 /* 
 if(process.env.NODE_ENV === "test") {
