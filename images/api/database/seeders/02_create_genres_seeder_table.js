@@ -3,7 +3,6 @@
  * @returns { Promise<void> } 
  */
 exports.seed = async function(knex) {
-  //await knex('genres').del();
   await knex('genres').insert([
     { name: 'action' },
     { name: 'adventure' },
