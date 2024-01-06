@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "npx knex migrate:latest --cwd database && npx knex migrate:up --cwd database && npx knex seed:run --cwd database && nodemon index.js"
+    "start": "npx knex migrate:rollback --cwd database && npx knex migrate:latest --cwd database && npx knex seed:run --cwd database && nodemon index.js"
   },
   "repository": {
     "type": "git",

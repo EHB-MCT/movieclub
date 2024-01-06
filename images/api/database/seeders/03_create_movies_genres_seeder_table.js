@@ -3,8 +3,8 @@
  * @returns { Promise<void> } 
  */
 exports.seed = async function(knex) {
-  // Deletes ALL existing entries
-  return knex('movies_genres').insert([
+  //await knex('movies_genres').del();
+  await knex('movies_genres').insert([
     { movie_id: 1, genre_id: 5 },
     { movie_id: 1, genre_id: 18},
     { movie_id: 2, genre_id: 6 },
